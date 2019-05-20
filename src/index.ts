@@ -6,18 +6,18 @@ class ProviderSqlite {
   public logger: Logger;
 
   constructor (opts: {
-    config: {
-      filename: string;
+    resource: {
+      config: {
+        filename: string;
+        [key: string]: any;
+      };
       [key: string]: any;
     };
     [key: string]: any;
   }) {
     this.logger = new Logger('@faasjs/provider-sqlite');
 
-    const config = Object.assign({
-      connectionLimit: 1,
-      port: 3306
-    }, opts.config);
+    const config = opts.resource.config;
 
     this.logger.debug('conncet: %o', config);
     this.pool = new Database(config.filename);
@@ -55,8 +55,11 @@ class ProviderSqlite {
 }
 
 export default function (opts: {
-  config: {
-    filename: string;
+  resource: {
+    config: {
+      filename: string;
+      [key: string]: any;
+    };
     [key: string]: any;
   };
   [key: string]: any;

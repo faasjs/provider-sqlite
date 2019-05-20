@@ -2,8 +2,10 @@ import sqlite from '../index';
 
 test('should work', async function () {
   const db = sqlite({
-    config: {
-      filename: ':memory:'
+    resource: {
+      config: {
+        filename: ':memory:'
+      }
     }
   });
 
