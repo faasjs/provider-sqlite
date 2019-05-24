@@ -6,21 +6,13 @@ class ProviderSqlite {
   public logger: Logger;
 
   constructor (opts: {
-    resource: {
-      config: {
-        filename: string;
-        [key: string]: any;
-      };
-      [key: string]: any;
-    };
+    filename: string;
     [key: string]: any;
   }) {
     this.logger = new Logger('@faasjs/provider-sqlite');
 
-    const config = opts.resource.config;
-
-    this.logger.debug('conncet: %o', config);
-    this.pool = new Database(config.filename);
+    this.logger.debug('conncet: %o', opts);
+    this.pool = new Database(opts.filename);
   }
 
   public query (sql: string, values?: any) {
@@ -55,14 +47,11 @@ class ProviderSqlite {
 }
 
 export function handler (opts: {
-  resource: {
-    config: {
-      filename: string;
-      [key: string]: any;
-    };
+  config: {
+    filename: string;
     [key: string]: any;
   };
   [key: string]: any;
 }) {
-  return new ProviderSqlite(opts);
+  return new ProviderSqlite(opts.config);
 }

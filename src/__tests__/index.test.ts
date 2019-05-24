@@ -2,10 +2,8 @@ import { handler } from '../index';
 
 test('should work', async function () {
   const db = handler({
-    resource: {
-      config: {
-        filename: ':memory:'
-      }
+    config: {
+      filename: ':memory:'
     }
   });
 
