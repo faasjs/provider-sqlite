@@ -54,7 +54,7 @@ class ProviderSqlite {
   }
 }
 
-export default function (opts: {
+export function handler (opts: {
   resource: {
     config: {
       filename: string;

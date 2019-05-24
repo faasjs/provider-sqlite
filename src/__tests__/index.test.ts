@@ -1,7 +1,7 @@
-import sqlite from '../index';
+import { handler } from '../index';
 
 test('should work', async function () {
-  const db = sqlite({
+  const db = handler({
     resource: {
       config: {
         filename: ':memory:'
